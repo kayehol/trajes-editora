@@ -12,24 +12,26 @@ const Header = styled.div`
   background-color: #fff;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
   padding-right: 20px;
+  position: fixed;
+  width:100%;
+  z-index: 1;
+  align-items: flex-end;
   img {
-    width: 110px;
-    max-width: 100  %;
-    padding: 0 0 5px 20px;
+    width: 80%;
+    max-width: 100%;
+    padding: 10px 20px;
   }
   #menu {
     font-family: Poppins, sans-serif;
     display: flex;
     justify-content: flex-end;
-    height: 60px;
     width: 100%;
   }
   #menu a {
     color: #231f20;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 0px 20px;
     border-bottom: 4px solid #fff;
     width: auto;
   }
@@ -41,7 +43,7 @@ const Footer =styled.div`
   font-family: Poppins, sans-serif;
   background-color: #758b8b;
   color: #fff;
-  height: 300px;
+  padding: 60px 40px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -62,6 +64,7 @@ const Footer =styled.div`
     padding-right: 40px;
   }
 `
+
 const Layout = ({ children }) => {
   return (
     <>
@@ -70,7 +73,7 @@ const Layout = ({ children }) => {
           <img src={elemAstros} alt="logo" />
         </Link>
         <div id="menu">
-          <Link to="/"><p>SELOS</p></Link>
+          <Link to="#logoSelo"><p>SELOS</p></Link>
           <Link to="/loja/"><p>LOJA</p></Link>
           <Link to="/autores/"><p>AUTORES</p></Link>
           <Link to="/blog/"><p>BLOG</p></Link>
@@ -85,13 +88,13 @@ const Layout = ({ children }) => {
           <p>E-MAIL: exemplo@gmail.com</p>
         </div>
         <div id="social">
-          <a href="#">
+          <a href="https://instagram.com">
             <img src={insta} alt="instagram" />
           </a>
-          <a href="#">
+          <a href="https://facebook.com">
             <img src={fb} alt="facebook" />
           </a>
-          <a href="#">
+          <a href="https://whatsapp.com">
             <img src={wpp} alt="whatsapp" />
           </a>
         </div>
