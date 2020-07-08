@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 //import { Link } from "gatsby"
 import styled from "styled-components"
@@ -13,12 +13,15 @@ const Container = styled.div`
   flex-direction: row;
   width: 100%;
   padding-top: 60px;
+  align-items: center;
 `
 
 const Wrapper = styled.div`
-  padding: 80px 40px;
+  padding: 60px 40px;
   display: flex;
   flex-direction: column;
+  width: 300px;
+  height: 600px;
   h3{
     color: #231f20;
     font-family: Poppins, sans-serif;
@@ -26,14 +29,16 @@ const Wrapper = styled.div`
     text-align: center;
   }
   Img {
-    border-radius: 25%;
+    border-radius: 15%;
   }
 `
 
 const Autor = (props) => (
   <Wrapper>
-    <Img id={props.nome} fluid={props.imagem} />
-    <h3>{props.nome}</h3>
+    <Link to={props.slug}>
+      <Img id={props.nome} fluid={props.imagem} />
+      <h3>{props.nome}</h3>
+    </Link>
   </Wrapper>
 )
 
@@ -45,7 +50,8 @@ const Autores = ({data}) => (
           key={node.id} 
           imagem={node.frontmatter.featuredImage.childImageSharp.fluid} 
           nome={node.frontmatter.nome} 
-          id={node.id} />
+          id={node.id}
+          slug={node.fields.slug} />
       ))}
     </Container>
   </Layout>
@@ -70,6 +76,9 @@ query {
           }
         }
         id
+        fields {
+          slug
+        }
       }
     }
   }

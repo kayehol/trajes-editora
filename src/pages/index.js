@@ -7,19 +7,15 @@ import "typeface-roboto"
 import Carousel from "react-bootstrap/Carousel"
 import logoSolares from "../images/logoSolares.png"
 import logoLunares from "../images/logoLunares.png"
-import logoDestaque from "../images/logoDestaque.png"
+import logoDestaque from "../images/trajes.png"
 import livroDestaque from "../images/livroDestaque.png"
 //import Image from "../components/image"
 //import SEO from "../components/seo"
 
 const Home = styled.div`
-  height: 700px;
-  width: 100%;
-  padding-top: 60px;
   z-index: 0;
-  img {
-    height: 640px;
-  }
+  width: 100%;
+  margin: auto;
 `
 
 const Selo = props => (
