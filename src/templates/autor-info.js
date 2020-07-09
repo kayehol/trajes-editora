@@ -27,10 +27,9 @@ const Container = styled.div`
     font-family: Poppins, sans-serif;
   }
   #nomeFoto{
-    padding: 80px 40px;
+    padding: 0;
     width: 30%;
-    display: flex;
-    flex-direction: column;
+    align-self: flex-end;
     h2{
       text-align: center;
       padding-top: 40px;
@@ -46,6 +45,7 @@ const Container = styled.div`
     justify-content: center;
     width: 70%;
     margin: auto;
+    height: 100%;
     #bio {
       padding: 80px 60px 0 0;
     }
@@ -55,6 +55,8 @@ const Container = styled.div`
     }
     a {
       text-align: center;
+      color: #000;
+      padding: 5px 0;
     }
   }
 `
