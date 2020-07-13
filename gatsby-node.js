@@ -15,11 +15,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     }
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
     // **Note:** The graphql function call returns a Promise
     // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
     const {createPage} = actions
-    const result = await graphql(`
+    const BlogPostTemplate = path.resolve('./src/templates/blogPost.js')
+    const resultMD = await graphql(`
       query {
         allMarkdownRemark {
           edges {
@@ -33,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
     
-    result.data.allMarkdownRemark.edges.forEach(({node}) => {
+    resultMD.data.allMarkdownRemark.edges.forEach(({node}) => {
         createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/autor-info.js`),
@@ -42,4 +43,33 @@ exports.createPages = async ({ graphql, actions }) => {
             },
         })
     })
+
+    const resultWP = await graphql(`
+    {
+      allWordpressPost {
+        edges {
+          node {
+            slug
+            wordpress_id
+          }
+        }
+      }
+    }
+  `)
+
+  if (resultWP.errors) {
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
+
+  const BlogPosts = resultWP.data.allWordpressPost.edges
+  BlogPosts.forEach(post => {
+    createPage({
+      path: `/post/${post.node.slug}`,
+      component: BlogPostTemplate,
+      context: {
+        id: post.node.wordpress_id,
+      },
+    })
+  })
+}

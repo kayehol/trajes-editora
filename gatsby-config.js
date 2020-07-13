@@ -43,6 +43,57 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        // I have created a dummy site for us to use with the plugins we discussed
+        baseUrl: "trajeseditora.com.br",
+        protocol: "https",
+        hostingWPCOM: false,
+        // We will be using some advanced custom fields
+        useACF: true,
+        acfOptionPageIds: [],
+        verboseOutput: false,
+        perPage: 100,
+        searchAndReplaceContentUrls: {
+          sourceUrl: "https://trajeseditora.com.br",
+          replacementUrl: "https://localhost:8000",
+        },
+        // Set how many simultaneous requests are sent at once.
+        concurrentRequests: 10,
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/tags",
+          "**/taxonomies",
+          "**/users",
+        ],
+        excludedRoutes: [],
+        normalizer: function ({ entities }) {
+          return entities
+        },
+      },
+    },
+    {
+      resolve: '@pasdo501/gatsby-source-woocommerce',
+      options: {
+        api: 'trajeseditora.com.br',
+        verbose: true,
+        https: true,
+        api_keys: {
+          consumer_key: 'ck_492439395609f62d3e2c7f0f6f80e20ab4a12ea1',
+          consumer_secret: 'cs_ac97ab2d1e5a9358c8656e408e13767f4a5d2067',
+        },
+        fields: ['products', 'products/categories', 'products/attributes'],
+        query_string_auth: false,
+        api_version: 'wc/v3',
+        per_page: 10,
+        encoding: 'utf8'
+      }
+    },
+    `gatsby-plugin-sitemap`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -77,9 +77,9 @@ const Contato = () => (
       <div id="faleConosco">
           <h3>FALE CONOSCO</h3>
           <form>
-              <input id='inputNome' type='text' placeholder='Nome'></input>
-              <input id='inputEmail' type='text' placeholder='E-mail'></input>
-              <textarea name='msg' rows='8' cols='20'></textarea>
+              <input id='inputNome' type='text' placeholder='Nome' aria-label='Nome'></input>
+              <input id='inputEmail' type='text' placeholder='E-mail' aria-label='Email'></input>
+              <textarea name='msg' rows='8' cols='20' aria-label='msg'></textarea>
               <button>Enviar</button>
           </form>
       </div>
