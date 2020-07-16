@@ -1,50 +1,51 @@
 const path = require(`path`)
-const {createFilePath} = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-    const {createNodeField} = actions
-    if (node.internal.type === `MarkdownRemark`) {
-        const slug = createFilePath({
-            node, getNode, basePath: `src/markdown`
-        })
-        createNodeField({
-            node,
-            name: `slug`,
-            value: `/autores${slug}`,
-        })
-    }
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({
+      node,
+      getNode,
+      basePath: `src/markdown`,
+    })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: `/autores${slug}`,
+    })
+  }
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-    // **Note:** The graphql function call returns a Promise
-    // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
-    const {createPage} = actions
-    const BlogPostTemplate = path.resolve('./src/templates/blogPost.js')
-    const resultMD = await graphql(`
-      query {
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
+  const { createPage } = actions
+  const BlogPostTemplate = path.resolve("./src/templates/blogPost.js")
+  const resultMD = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
       }
-    `)
-    
-    resultMD.data.allMarkdownRemark.edges.forEach(({node}) => {
-        createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/templates/autor-info.js`),
-            context: {
-                slug: node.fields.slug,
-            },
-        })
-    })
+    }
+  `)
 
-    const resultWP = await graphql(`
+  resultMD.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/autor-info.js`),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+
+  const resultWP = await graphql(`
     {
       allWordpressPost {
         edges {
@@ -58,7 +59,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   if (resultWP.errors) {
-    reporter.panicOnBuild('Error while running GraphQL query.')
+    reporter.panicOnBuild("Error while running GraphQL query.")
     return
   }
 
@@ -70,6 +71,36 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: post.node.wordpress_id,
       },
+    })
+  })
+
+  const resultWC = await graphql(`
+    query {
+      allWcProducts {
+        edges {
+          node {
+            slug
+            wordpress_id
+          }
+        }
+      }
+    }
+  `)
+
+  if (resultWC.errors) {
+    reporter.panicOnBuild('Error while running GraphQL query')
+    return
+  }
+
+  const produtos = resultWC.data.allWcProducts.edges
+  produtos.forEach(produto => {
+    createPage({
+      path: `/loja/${produto.node.slug}`,
+      component: path.resolve("./src/templates/produto.js"),
+      context: {
+        id: produto.node.wordpress_id,
+        slug: produto.node.slug
+      }
     })
   })
 }

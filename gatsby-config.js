@@ -46,7 +46,6 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        // I have created a dummy site for us to use with the plugins we discussed
         baseUrl: "trajeseditora.com.br",
         protocol: "https",
         hostingWPCOM: false,
@@ -65,7 +64,7 @@ module.exports = {
           "**/categories",
           "**/posts",
           "**/pages",
-          "**/media",
+          //"**/media",
           "**/tags",
           "**/taxonomies",
           "**/users",

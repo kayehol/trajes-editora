@@ -1,33 +1,39 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+//import SEO from "../components/seo"
 import styled from "styled-components"
+import Img from "gatsby-image"
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    padding: 60px 120px;
+  display: flex;
+  flex-direction: row;
+  padding: 120px;
+  a{
+    color: #231f20;
+  }
 `
 
 const Livro = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-family: Poppins, sans-serif;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Poppins, sans-serif;
+  align-items: center;
 `
 
-const Loja = ({data}) => (
+const Loja = ({ data }) => (
   <Layout>
     <Container>
-        {data.allWcProducts.edges.map((node) => (
-            <Livro>
-                <h3>Capa</h3>
-                <h4>{node.node.name}</h4>
-                <h5>Nilton Resende</h5>
-                <p>R$ {node.node.price}</p>
-            </Livro>
-        ))}
+      {data.allWcProducts.edges.map(node => (
+        <Link to={node.node.slug}>
+          <Livro key={node.node.id}>
+            <Img fixed={node.node.images[1].localFile.childImageSharp.fixed} />
+            <h4>{node.node.name}</h4>
+            <h5>{node.node.categories[0].name}</h5>
+            <p>R$ {node.node.price}</p>
+          </Livro>
+        </Link>
+      ))}
     </Container>
   </Layout>
 )
@@ -35,23 +41,27 @@ const Loja = ({data}) => (
 export default Loja
 
 export const query = graphql`
-query allProducts {
+  query {
     allWcProducts {
       edges {
         node {
-          id
           wordpress_id
-          name
-          categories {
-            wordpress_id
-          }
-          images {
-            name
-            id
-            alt
-            src
-          }
           price
+          name
+          slug
+          images {
+            alt
+            localFile {
+              childImageSharp {
+                fixed(width: 300, toFormat: JPG) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
+          categories {
+            name
+          }
         }
       }
     }
