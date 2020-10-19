@@ -20,23 +20,23 @@ const Wrapper = styled.div`
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 600px;
+  width: 100%;  
+  justify-content: space-between;
   h3{
     color: #231f20;
     font-family: Poppins, sans-serif;
     padding-top: 15px;
     text-align: center;
   }
-  Img {
+  img {
     border-radius: 15%;
   }
 `
 
 const Autor = (props) => (
   <Wrapper>
+    <Img id={props.nome} fluid={props.imagem} />
     <Link to={props.slug}>
-      <Img id={props.nome} fluid={props.imagem} />
       <h3>{props.nome}</h3>
     </Link>
   </Wrapper>
@@ -68,7 +68,7 @@ query {
           nome
           featuredImage {
             childImageSharp {
-              fluid(maxWidth: 244, maxHeight: 300) {
+              fluid {
                 ...GatsbyImageSharpFluid
                 ...GatsbyImageSharpFluidLimitPresentationSize
               }

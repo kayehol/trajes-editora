@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 //import SEO from "../components/seo"
 import styled from "styled-components"
@@ -25,14 +25,14 @@ const Loja = ({ data }) => (
   <Layout>
     <Container>
       {data.allWcProducts.edges.map(node => (
-        <Link to={node.node.slug}>
+        <a href='https://trajeseditora.com.br/diabolo/' target='_blank' rel='noopener noreferrer'>
           <Livro key={node.node.id}>
             <Img fixed={node.node.images[1].localFile.childImageSharp.fixed} />
             <h4>{node.node.name}</h4>
             <h5>{node.node.categories[0].name}</h5>
             <p>R$ {node.node.price}</p>
           </Livro>
-        </Link>
+        </a>
       ))}
     </Container>
   </Layout>

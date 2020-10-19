@@ -25,18 +25,19 @@ const Container = styled.div`
     width: 80%;
     padding: 0;
     font-family: Poppins, sans-serif;
+    align-items: center;
   }
   #nomeFoto{
     padding: 0;
     width: 30%;
-    align-self: flex-end;
+    align-items: center;
+    justify-content: flex-end;
     h2{
-      text-align: center;
+      
       padding-top: 40px;
     }
     Img {
-      width: 100%;
-      border-radius: 15%;
+      border-radius: 15%;    
     }
   }
   #infoLink{
@@ -99,7 +100,7 @@ export const query = graphql`
         nome
         featuredImage {
           childImageSharp {
-            fluid  {
+            fluid(maxWidth: 244, maxHeight: 300)  {
               ...GatsbyImageSharpFluid
               ...GatsbyImageSharpFluidLimitPresentationSize
             }

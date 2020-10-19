@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
+//import Img from 'gatsby-image'
 
 const Container = styled.div`
     font-family: Poppins, sans-serif;
@@ -73,6 +74,15 @@ export const query = graphql`
             name
           }
           date(formatString: "DD MM, YYYY")
+          featured_media {
+              localFile {
+                  childImageSharp {
+                      fluid {
+                          ...GatsbyImageSharpFluid
+                      }
+                  }
+              }
+          }
         }
       }
     }

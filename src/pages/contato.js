@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
+import {useForm} from "react-hook-form"
+import axios from 'axios'
 
 const Container = styled.div`
     display: flex;
@@ -51,12 +53,32 @@ const Container = styled.div`
         margin-top: 40px;
         background-color: #fff;
         border: 2px solid #dbc724;
-        font-weight: bold;
+    }
+    button:hover {
+      font-weight: bold;
+      border: 4px solid #dbc724;
     }
 `
 
-const Contato = () => (
-  <Layout>
+const Contato = () => {
+  const {register, handleSubmit, watch, errors} = useForm()
+  
+  const onSubmit = data => {
+    axios.post(
+      'https://getform.io/f/d3cc8014-e4b2-4ab3-bf08-9f1e5a71faf4',
+      data,
+      {headers: {Accept: 'application/json'}}
+    ).then(function(response){
+      console.log(response)
+    }).catch(function(error){
+      console.log(error)
+    })
+  }
+
+  console.log(watch('exemplo'))
+
+  return(
+    <Layout>
     <Container>
       <div id="links">
         <ul>
@@ -76,15 +98,38 @@ const Contato = () => (
       </div>
       <div id="faleConosco">
           <h3>FALE CONOSCO</h3>
-          <form>
-              <input id='inputNome' type='text' placeholder='Nome' aria-label='Nome'></input>
-              <input id='inputEmail' type='text' placeholder='E-mail' aria-label='Email'></input>
-              <textarea name='msg' rows='8' cols='20' aria-label='msg'></textarea>
-              <button>Enviar</button>
+          <form 
+            onSubmit={handleSubmit(onSubmit)}
+            >
+              <input 
+                name='nome'
+                defaultValue='Nome'
+                ref={register({required: true})}
+              />
+              {errors.nome && <span>Nome inválido</span>}
+              <input 
+                name='email'
+                defaultValue='E-mail'
+                ref={
+                  register({
+                    required: true, 
+                    pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                  })}
+              />
+              {errors.email && <span>E-mail inválido</span>}
+              <textarea 
+                name='msg' 
+                rows='8' 
+                cols='20' 
+                ref={register({required: true})}></textarea>
+              {errors.msg && <span>Mensagem inválida</span>}
+              <button type='submit'>ENVIAR</button>
           </form>
       </div>
     </Container>
   </Layout>
-)
+  )
+  
+}
 
 export default Contato

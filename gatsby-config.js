@@ -48,6 +48,15 @@ module.exports = {
       options: {
         baseUrl: "trajeseditora.com.br",
         protocol: "https",
+        plugins: [
+          {
+            resolve: `gatsby-wordpress-inline-images`,
+            options: {
+              baseUrl: `trajeseditora.com.br`,
+              protocol: `https`
+            }
+          }
+        ],
         hostingWPCOM: false,
         // We will be using some advanced custom fields
         useACF: true,
@@ -64,7 +73,7 @@ module.exports = {
           "**/categories",
           "**/posts",
           "**/pages",
-          //"**/media",
+          "**/media",
           "**/tags",
           "**/taxonomies",
           "**/users",
@@ -92,7 +101,7 @@ module.exports = {
         encoding: 'utf8'
       }
     },
-    `gatsby-plugin-sitemap`
+    
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

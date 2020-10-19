@@ -63,12 +63,20 @@ const SeloWrapper = styled.div`
     letter-spacing: 2px;
   }
 `
-const txtApresentacao = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+const txtApresentacaoSolares = `Assim como  a simbologia evidencia, este selo editorial, que será lançado em 2021, terá um papel distinto do outro — aqui, um tanto "apolíneo" —, pois através dele publicaremos obras científicas e acadêmicas, com um olhar especialmente voltado para a elucidação daquilo que podemos chamar de “Cultura Alagoana”. Serão teses, dissertações e ensaios, contemporâneos e clássicos, minuciosamente editados para que alcancem públicos diversos e não-especializados.`
+const txtApresentacaoLunares = `Abarcando um universo de caráter mais  imaginativo e "dionisíaco", este selo editorial dirá respeito a obras ficcionais e poéticas  — produções  de autores contemporâneos, com textos inéditos ou reeditados, e edições especiais revisadas de clássicos da literatura alagoana.`
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 80px;
+
+  article {
+    padding: 4em 8em;
+    column-count: 2;
+    column-gap: 40px;
+    text-align: justify;
+  }
 `
 
 const IndexPage = () => (
@@ -88,8 +96,13 @@ const IndexPage = () => (
           </Carousel.Item>
         </Carousel>
       </Home>
-      <Selo image={logoSolares} texto={txtApresentacao} />
-      <Selo image={logoLunares} texto={txtApresentacao} />
+      <article>
+        <p> A Trajes nasceu com a preocupação elementar de construir um ambiente editorial fundamentado em um&nbsp; novo tipo de relação entre editora, autores e leitores. Nasceu a partir da preocupação de construir soluções que tragam um equilíbrio para esse vínculo, tornando-o mais transparente e justo — especialmente, incorporando a esse processo um cuidado editorial atento, efetivo e afetivo. Afinal, cremos que publicamos livros que trazem histórias que seguem para além daquelas impressas exclusivamente em suas páginas.</p>
+        <p>Nossas publicações passam por uma curadoria apurada, em que nos esforçamos por trazer à tona tanto livros de autores contemporâneos quanto novas edições de importante obras&nbsp;alagoanas que encontram-se esgotadas há anos, mas que, seja pelo seu caráter estético-criativo ou pelo seu potencial uso no âmbito da pesquisa e elucidação das questões alagoanas, precisam ser recolocadas em circulação no mercado editorial.</p>
+        <p>Para alcançar esses objetivos, e buscando trazer uma organização autoevidente para nosso projeto, lançamos dois selos editoriais:</p>
+      </article>
+      <Selo image={logoLunares} texto={txtApresentacaoLunares} />
+      <Selo image={logoSolares} texto={txtApresentacaoSolares} />
     </Container>
   </Layout>
 )

@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import btVoltar from "../images/voltar.png"
+//import Img from 'gatsby-image'
 
 const PostCompleto = styled.div`
   padding: 100px 240px 50px;
@@ -44,6 +45,7 @@ const BlogPostTemplate = ({ data }) => (
         Escrito por {data.wordpressPost.author.name} on{" "}
         {data.wordpressPost.date}
       </p>
+      
       <div
         id="conteudoPost"
         dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
@@ -63,6 +65,15 @@ export const query = graphql`
       date(formatString: "DD MM, YYYY")
       author {
         name
+      }
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
