@@ -74,9 +74,7 @@ module.exports = {
           "**/posts",
           "**/pages",
           "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/users",
+          "**/tags"
         ],
         excludedRoutes: [],
         normalizer: function ({ entities }) {
@@ -94,7 +92,7 @@ module.exports = {
           consumer_key: 'ck_492439395609f62d3e2c7f0f6f80e20ab4a12ea1',
           consumer_secret: 'cs_ac97ab2d1e5a9358c8656e408e13767f4a5d2067',
         },
-        fields: ['products', 'products/categories', 'products/attributes'],
+        fields: ['products', 'products/categories'],
         query_string_auth: false,
         api_version: 'wc/v3',
         per_page: 10,

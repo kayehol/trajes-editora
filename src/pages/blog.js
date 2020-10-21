@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-//import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 
 const Container = styled.div`
     font-family: Poppins, sans-serif;
@@ -23,7 +23,7 @@ const Container = styled.div`
         width: 75%;
     }
     h3 {
-        margin-bottom: 0;
+        margin-bottom: 1em;
     }
     p{
         margin: 0;
@@ -49,7 +49,9 @@ const Blog = ({data}) => (
                         <Link to={`/post/${post.node.slug}`}>
                             <div id="post">
                                 <h3 dangerouslySetInnerHTML={{__html: post.node.title}}/>
-                                <p id="autorData">Escrito por {post.node.author.name} em {post.node.date}</p>
+                                <Img 
+                                    fluid={post.node.featured_media.localFile.childImageSharp.fluid}
+                                />
                                 <div id="excerpt" dangerouslySetInnerHTML={{__html: post.node.excerpt}} />
                             </div>
                         </Link>
@@ -70,14 +72,11 @@ export const query = graphql`
           title
           excerpt
           slug
-          author {
-            name
-          }
           date(formatString: "DD MM, YYYY")
           featured_media {
               localFile {
                   childImageSharp {
-                      fluid {
+                      fluid (maxWidth: 800, maxHeight: 150) {
                           ...GatsbyImageSharpFluid
                       }
                   }

@@ -42,7 +42,6 @@ const BlogPostTemplate = ({ data }) => (
       </Link>
       <h1>{data.wordpressPost.title}</h1>
       <p id="autorData">
-        Escrito por {data.wordpressPost.author.name} on{" "}
         {data.wordpressPost.date}
       </p>
       
@@ -63,9 +62,6 @@ export const query = graphql`
       content
       excerpt
       date(formatString: "DD MM, YYYY")
-      author {
-        name
-      }
       featured_media {
         localFile {
           childImageSharp {
