@@ -12,6 +12,7 @@ const Container = styled.div`
     #links{
         width: 50%;
         padding: 50px;
+        font-size: 1.3em;
     }
     ul {
         list-style-type: none;
@@ -42,7 +43,7 @@ const Container = styled.div`
         width: 100%;
     }
     input {
-        padding: 10px 0;
+        padding: 10px 5px;
         margin: 10px 0;
         width: 100%;
     }
@@ -83,16 +84,22 @@ const Contato = () => {
       <div id="links">
         <ul>
           <li>
-            <a href="https://www.google.com">TELEFONE</a>
+            <b>TELEFONE:</b> <a href="https://wa.me/5582998054902">(82) 99805-4902</a> | <a href="https://wa.me/5582999859165">(82) 99985-9165</a>
           </li>
           <li>
-            <a href="https://www.google.com">E-MAIL</a>
+            <b>E-MAIL: </b> <a href="mailto:trajeseditora@gmail.com"> trajeseditora@gmail.com</a>
           </li>
           <li>
-            <a href="https://www.google.com">FACEBOOK</a>
+            <a href="https://www.facebook.com/trajeslunares/"><b>FACEBOOK</b></a>
           </li>
           <li>
-            <a href="https://www.google.com">INSTAGRAM</a>
+            <b>INSTAGRAM: </b>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/trajeslunares/">TRAJES LUNARES</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/trajessolares/">TRAJES SOLARES</a>
           </li>
         </ul>
       </div>

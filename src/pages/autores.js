@@ -11,16 +11,16 @@ import Layout from "../components/layout"
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
   padding-top: 60px;
-  align-items: center;
+  align-items: justify-start;
 `
 
 const Wrapper = styled.div`
-  padding: 60px 40px;
+  padding: 60px 50px;
   display: flex;
   flex-direction: column;
-  width: 100%;  
+  width: 400px; 
+  height: 550px; 
   justify-content: space-between;
   h3{
     color: #231f20;
@@ -68,9 +68,8 @@ query {
           nome
           featuredImage {
             childImageSharp {
-              fluid {
+              fluid (maxWidth: 400, maxHeight: 550) {
                 ...GatsbyImageSharpFluid
-                ...GatsbyImageSharpFluidLimitPresentationSize
               }
             }
           }

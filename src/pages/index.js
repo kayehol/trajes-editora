@@ -1,4 +1,5 @@
 import React from "react"
+import {Link}  from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -25,7 +26,9 @@ const Selo = props => (
     </div>
     <div id="apresentacao">
       <p>{props.texto}</p>
-      <button>IR PARA LOJA</button>
+      <Link to='/loja'>
+        <button>IR PARA LOJA</button>
+      </Link>
     </div>
   </SeloWrapper>
 )
@@ -96,7 +99,7 @@ const IndexPage = () => (
           </Carousel.Item>
         </Carousel>
       </Home>
-      <article>
+      <article id="selosApresentacao">
         <p> A Trajes nasceu com a preocupação elementar de construir um ambiente editorial fundamentado em um&nbsp; novo tipo de relação entre editora, autores e leitores. Nasceu a partir da preocupação de construir soluções que tragam um equilíbrio para esse vínculo, tornando-o mais transparente e justo — especialmente, incorporando a esse processo um cuidado editorial atento, efetivo e afetivo. Afinal, cremos que publicamos livros que trazem histórias que seguem para além daquelas impressas exclusivamente em suas páginas.</p>
         <p>Nossas publicações passam por uma curadoria apurada, em que nos esforçamos por trazer à tona tanto livros de autores contemporâneos quanto novas edições de importante obras&nbsp;alagoanas que encontram-se esgotadas há anos, mas que, seja pelo seu caráter estético-criativo ou pelo seu potencial uso no âmbito da pesquisa e elucidação das questões alagoanas, precisam ser recolocadas em circulação no mercado editorial.</p>
         <p>Para alcançar esses objetivos, e buscando trazer uma organização autoevidente para nosso projeto, lançamos dois selos editoriais:</p>

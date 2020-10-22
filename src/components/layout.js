@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
           <img src={elemAstros} alt="logo" />
         </Link>
         <div id="menu">
-          <Link to="/"><p>SELOS</p></Link>
+          <Link to="#selosApresentacao"><p>SELOS</p></Link>
           <Link to="/loja/"><p>LOJA</p></Link>
           <Link to="/autores/"><p>AUTORES</p></Link>
           <Link to="/blog/"><p>BLOG</p></Link>
@@ -84,8 +84,9 @@ const Layout = ({ children }) => {
       <Footer>
         <div id="contatos">
           <p>ENTRE EM CONTATO</p>
-          <p>TEL.: (82) 0000-0000</p>
-          <p>E-MAIL: exemplo@gmail.com</p>
+          <p>TEL.: (82) 99805-4902</p>
+          <p>TEL.: (82) 99985-9165</p>
+          <p>E-MAIL: trajeseditora@gmail.com</p>
         </div>
         <div id="social">
           <a href="https://instagram.com">
