@@ -38,6 +38,9 @@ const Header = styled.div`
   #menu a:hover {
     border-bottom: 4px solid #dbc724;
   }
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `
 const Footer =styled.div`
   font-family: Poppins, sans-serif;
@@ -73,7 +76,7 @@ const Layout = ({ children }) => {
           <img src={elemAstros} alt="logo" />
         </Link>
         <div id="menu">
-          <Link to="#selosApresentacao"><p>SELOS</p></Link>
+          <Link to="/"><p>SELOS</p></Link>
           <Link to="/loja/"><p>LOJA</p></Link>
           <Link to="/autores/"><p>AUTORES</p></Link>
           <Link to="/blog/"><p>BLOG</p></Link>

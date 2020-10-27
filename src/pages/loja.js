@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 //import SEO from "../components/seo"
 import styled from "styled-components"
@@ -9,16 +9,27 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   padding: 120px 0;
-  
+  align-items: flex-end;
   a{
     color: #231f20;
   }
+  height: 600px;
 `
 
 const Livro = styled.div`
   display: flex;
   flex-direction: column;
   font-family: Poppins, sans-serif;
+  padding: 0 2em;
+  height: auto;
+  width: 25%;
+  margin: 0;
+  h4 {
+    padding: 0.8em 0;
+  }
+  img {
+    border-radius: 15%;
+  }
 `
 
 const Loja = ({ data }) => (
@@ -26,8 +37,10 @@ const Loja = ({ data }) => (
     <Container>
       {data.allWcProducts.edges.map(node => (
           <Livro key={node.node.id}>
-            <Img fixed={node.node.images[1].localFile.childImageSharp.fixed} />
-            <h4>{node.node.name}</h4>
+            <Img fluid={node.node.images[1].localFile.childImageSharp.fluid} />
+            <Link href={`https://trajeseditora.com.br/loja/produto/${node.node.slug}`}>
+              <h4>{node.node.name}</h4>
+            </Link>
             <h5>{node.node.categories[0].name}</h5>
             <p>R$ {node.node.price}</p>
           </Livro>
@@ -51,7 +64,7 @@ export const query = graphql`
             alt
             localFile {
               childImageSharp {
-                fluid(maxWidth: 300, toFormat: JPG) {
+                fluid(maxWidth: 500, toFormat: JPG) {
                   ...GatsbyImageSharpFluid
                 }
               }

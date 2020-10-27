@@ -5,7 +5,7 @@ import styled from "styled-components"
 import btVoltar from "../images/voltar.png"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
-//import mercadopago from "../components/mercadopago"
+
 
 const Container = styled.div`
   padding: 100px 80px;
@@ -29,47 +29,46 @@ const Container = styled.div`
     #bioProduto {
       display: flex;
       flex-direction: column;
-      padding: 0 40px;
-      width: 33%;
+      padding: 0 20px;
+      width: 43%;
+      text-align: justify;
     }
     #infosProduto {
       display: flex;
       flex-direction: column;
       padding: 0 20px;
-      width: 33%;
+      width: 23%;
       ul {
         list-style-type: none;
         margin: 0;
         padding: 20px 0;
       }
       ul li {
-        padding: 6px 0;
+        padding: 3px 0;
         margin: 0;
       }
     }
     button {
       background-color: #fff;
-      border: 4px solid #dbc724;
-      padding: 10px 40px;
-      font-weight: bold;
+      border: 2px solid #dbc724;
+      padding: 10px;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 1.3em;
+      letter-spacing: 2px;
+    }
+    h4 {
+      font-size: 1em;
+    }
+    #shortDescription {
+      padding-top: 1.1em;
+    }
+    img {
+      border-radius: 15%;
+      padding: 0 1em 1em 1em;
     }
   }
 `
-/*
-class Checkout extends React.Component {
-  componentDidMount() {
-    
-  }
-
-  render() {
-    return (
-      <div>
-        {mercadopago}
-      </div>
-    )
-  }
-}
-*/
 
 const Produto = ({ data }) => (
   <Layout>
@@ -101,11 +100,15 @@ const Produto = ({ data }) => (
           />
         </div>
         <div id="infosProduto">
-          <h3>INFOS</h3>
+          <h3>Informações</h3>
           <div
             id="description"
             dangerouslySetInnerHTML={{ __html: data.wcProducts.description }}
           />
+          <Link 
+            href={`https://trajeseditora.com.br/loja/produto/${data.wcProducts.slug}`}>
+            <button>COMPRAR</button>
+          </Link>
         </div>
       </div>
     </Container>
@@ -131,6 +134,7 @@ export const query = graphql`
       }
       name
       short_description
+      slug
       description
       wordpress_id
     }

@@ -55,12 +55,13 @@ const Container = styled.div`
       padding: 80px 60px 0 0;
     }
     #bio p {
-      text-align: left;
+      text-align: justify;
       padding: 0 100px;
+      font-size: 1.1em;
     }
     #bio a {
       color: #000;
-      font-size: 1.3em;
+      font-size: 1.1em;
       text-align: center;
       margin: 0;
       padding: 0;

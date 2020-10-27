@@ -17,6 +17,14 @@ const Home = styled.div`
   z-index: 0;
   width: 100%;
   margin: auto;
+  @media screen and (max-width: 720px) {
+    img {
+      height: 350px;
+      margin: auto;
+      padding: 2em 0;
+      width: 100%;
+    }
+  }
 `
 
 const Selo = props => (
@@ -65,6 +73,19 @@ const SeloWrapper = styled.div`
     font-size: 1.3em;
     letter-spacing: 2px;
   }
+  @media screen and (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    p {
+      column-count: 1;
+      font-family: Roboto, sans-serif;
+      text-align: left;
+    }
+    #apresentacao {
+      width: 100%;
+    }
+  }
 `
 const txtApresentacaoSolares = `Assim como  a simbologia evidencia, este selo editorial, que será lançado em 2021, terá um papel distinto do outro — aqui, um tanto "apolíneo" —, pois através dele publicaremos obras científicas e acadêmicas, com um olhar especialmente voltado para a elucidação daquilo que podemos chamar de “Cultura Alagoana”. Serão teses, dissertações e ensaios, contemporâneos e clássicos, minuciosamente editados para que alcancem públicos diversos e não-especializados.`
 const txtApresentacaoLunares = `Abarcando um universo de caráter mais  imaginativo e "dionisíaco", este selo editorial dirá respeito a obras ficcionais e poéticas  — produções  de autores contemporâneos, com textos inéditos ou reeditados, e edições especiais revisadas de clássicos da literatura alagoana.`
@@ -80,6 +101,12 @@ const Container = styled.div`
     column-gap: 40px;
     text-align: justify;
   }
+  @media screen and (max-width: 720px) {
+    article {
+      padding: 0 2em;
+      column-count: 1;
+    }
+  }
 `
 
 const IndexPage = () => (
@@ -93,7 +120,7 @@ const IndexPage = () => (
           <Carousel.Item>
             <img className="d-block w-100" src={livroDestaque} alt="livro" />
             <Carousel.Caption>
-              <h3>Diabolos</h3>
+              <h3>Diabolô</h3>
               <p>Confira o novo livro!</p>
             </Carousel.Caption>
           </Carousel.Item>

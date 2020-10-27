@@ -3,6 +3,10 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import {useForm} from "react-hook-form"
 import axios from 'axios'
+import imgFone from "../images/tel.svg"
+import imgEmail from "../images/email.svg"
+import imgInsta from "../images/instagram.svg"
+import imgFace from "../images/facebook.svg"
 
 const Container = styled.div`
     display: flex;
@@ -21,6 +25,10 @@ const Container = styled.div`
     }
     ul li {
         padding: 10px 0;
+    }
+    ul li img {
+      width: 5%;
+      margin-right: 1em;
     }
     a {
         color: #000;
@@ -56,8 +64,10 @@ const Container = styled.div`
         border: 2px solid #dbc724;
     }
     button:hover {
-      font-weight: bold;
       border: 4px solid #dbc724;
+    }
+    .listaInsta {
+      padding-left: 2em;
     }
 `
 
@@ -84,21 +94,28 @@ const Contato = () => {
       <div id="links">
         <ul>
           <li>
+            <img src={imgFone} alt="fone" />
             <b>TELEFONE:</b> <a href="https://wa.me/5582998054902">(82) 99805-4902</a> | <a href="https://wa.me/5582999859165">(82) 99985-9165</a>
           </li>
           <li>
+            <img src={imgEmail} alt="emails" />
             <b>E-MAIL: </b> <a href="mailto:trajeseditora@gmail.com"> trajeseditora@gmail.com</a>
           </li>
           <li>
-            <a href="https://www.facebook.com/trajeslunares/"><b>FACEBOOK</b></a>
+              <img src={imgFace} alt="facebook" />
+              <b>FACEBOOK: </b>
+              <a href="https://www.facebook.com/trajeslunares/">
+                trajeslunares
+              </a>
           </li>
           <li>
+            <img src={imgInsta} alt="instagram" />
             <b>INSTAGRAM: </b>
           </li>
-          <li>
+          <li className="listaInsta">
             <a href="https://www.instagram.com/trajeslunares/">TRAJES LUNARES</a>
           </li>
-          <li>
+          <li className="listaInsta">
             <a href="https://www.instagram.com/trajessolares/">TRAJES SOLARES</a>
           </li>
         </ul>
