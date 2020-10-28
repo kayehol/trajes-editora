@@ -76,7 +76,7 @@ const Layout = ({ children }) => {
           <img src={elemAstros} alt="logo" />
         </Link>
         <div id="menu">
-          <Link to="/"><p>SELOS</p></Link>
+          <Link to="/selos"><p>SELOS</p></Link>
           <Link to="/loja/"><p>LOJA</p></Link>
           <Link to="/autores/"><p>AUTORES</p></Link>
           <Link to="/blog/"><p>BLOG</p></Link>

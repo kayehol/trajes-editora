@@ -53,7 +53,13 @@ module.exports = {
             resolve: `gatsby-wordpress-inline-images`,
             options: {
               baseUrl: `trajeseditora.com.br`,
-              protocol: `https`
+              protocol: `https`,
+              maxWidth: 650,
+              wrapperStyle: ``,
+		          postTypes: ["post", "page"],
+		          backgroundColor: `white`,
+		          withWebp: false, // enable WebP files generation
+		          useACF: false, 
             }
           }
         ],
