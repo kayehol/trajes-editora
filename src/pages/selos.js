@@ -109,7 +109,7 @@ const Container = styled.div`
   }
 `
 
-const IndexPage = () => (
+const Selos = () => (
   <Layout>
     <Container>
       <Home>
@@ -137,4 +137,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default Selos

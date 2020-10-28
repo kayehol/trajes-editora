@@ -85,7 +85,7 @@ const Produto = ({ data }) => (
       <div id="autorGeral">
         
         <Img
-          fixed={data.wcProducts.images[1].localFile.childImageSharp.fixed}
+          fixed={data.wcProducts.images[0].localFile.childImageSharp.fixed}
         />
         <div id="bioProduto">
           <div id="headProduto">
