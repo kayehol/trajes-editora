@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react"
-//import { elastic as Menu } from "react-burger-menu"
+import { elastic as Menu } from "react-burger-menu"
 import { Link } from "gatsby"
 import "./layout.css"
 import styled from "styled-components"
@@ -40,7 +40,12 @@ const Header = styled.div`
     border-bottom: 4px solid #dbc724;
   }
   @media screen and (max-width: 720px) {
-    display: none;
+    #menu, img {
+      display: none;
+    }
+    a {
+      color: #fff;
+    }
   }
 `
 
@@ -76,10 +81,10 @@ const Footer =styled.div`
     }
   }
 `
-/*
+
 const MyContext = React.createContext()
 
-const MyProvider = props => {
+const MyProvider = (props) => {
   const [menuOpenState, setMenuOpenState] = useState(false)
 
   return (
@@ -87,44 +92,51 @@ const MyProvider = props => {
       value={{
         isMenuOpen: menuOpenState,
         toggleMenu: () => setMenuOpenState(!menuOpenState),
-        stateChangeHandler: newState => setMenuOpenState(newState.isOpen),
+        stateChangeHandler: (newState) => setMenuOpenState(newState.isOpen)
       }}
     >
       {props.children}
     </MyContext.Provider>
   )
 }
+/*
+const Button = () => {
+  const ctx = useContext(MyContext)
+  return (
+    <button onClick={ctx.toggleMenu}>
+      Toggle menu
+    </button>
+  )
+}
+*/
+
 
 const Navigation = () => {
   const ctx = useContext(MyContext)
   return (
     <Menu
+      onClick={ctx.toggleMenu}
       isOpen={ctx.isMenuOpen}
-      onStateChange={state => ctx.stateChangeHandler(state)}
+      onStateChange={(state) => ctx.stateChangeHandler(state)}
     >
-      <a href="#escritorio" className="menu-item">
-        SELOS
-      </a>
-      <a href="#socios" className="menu-item">
-        LOJA
-      </a>
-      <a href="#contato" className="menu-item">
-        AUTORES
-      </a>
-      <a href="#contato" className="menu-item">
-        BLOG
-      </a>
-      <a href="#contato" className="menu-item">
-        CONTATO
-      </a>
+      <a href='/selos' className='menu-item'>SELOS</a>
+      <a href='/loja' className='menu-item'>LOJA</a>
+      <a href='/autores' className='menu-item'>AUTORES</a>
+      <a href='/blog' className='menu-item'>BLOG</a>
+      <a href='/contato' className='menu-item'>CONTATO</a>
     </Menu>
   )
 }
-*/
+
 const Layout = ({ children }) => {
   return (
     <>
       <Header>
+        <MyProvider>
+          <div>
+            <Navigation />
+          </div>
+        </MyProvider>
         <Link to="/">
           <img src={elemAstros} alt="logo" />
         </Link>

@@ -71,7 +71,7 @@ const Container = styled.div`
     }
     @media screen and (max-width: 720px) {
       flex-direction: column;
-      padding: 2em 1em;
+      padding: 4em 1em;
       #links {
         width: 100%;
         padding: 2em 1em;

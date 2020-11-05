@@ -19,6 +19,7 @@ const Container = styled.div`
     padding: 4em 1em;
     align-items: flex-start;
     height: auto;
+    padding-top: 6em;
   }
 `
 

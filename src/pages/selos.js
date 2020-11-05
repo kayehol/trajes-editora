@@ -18,6 +18,7 @@ const Home = styled.div`
   width: 100%;
   margin: auto;
   @media screen and (max-width: 720px) {
+    margin-top: 4em;
     img {
       height: 350px;
       margin: auto;

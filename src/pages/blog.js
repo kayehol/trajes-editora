@@ -41,7 +41,7 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 0 1em;
+        padding: 4em 1em;
         #post {
             width: 100%;
         }
