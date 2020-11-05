@@ -37,6 +37,29 @@ const Container = styled.div`
     #excerpt {
         padding: 10px 0;
     }
+    @media screen and (max-width: 720px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1em;
+        #post {
+            width: 100%;
+        }
+        #post img {
+            height: 150px;
+        }
+        ul {
+            justify-content: center;
+            align-self: center;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            padding: 2em 0;
+            align-self: center;
+            margin: 0;
+        }
+    }
 `
 
 const Blog = ({data}) => (

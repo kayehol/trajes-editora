@@ -69,6 +69,35 @@ const Container = styled.div`
     .listaInsta {
       padding-left: 2em;
     }
+    @media screen and (max-width: 720px) {
+      flex-direction: column;
+      padding: 2em 1em;
+      #links {
+        width: 100%;
+        padding: 2em 1em;
+      }
+      #faleConosco {
+        width: 100%;
+        padding: 2em 1em;
+      }
+      button {
+        align-self: center;
+      }
+      ul li {
+        display: flex;
+        flex-direction: column;
+        padding: 1em 0;
+      }
+      ul li img {
+        width: 15%;
+      }
+      ul li a {
+        padding: 0.5em 0;
+      }
+      .listaInsta {
+        padding: 0.5em 0;
+      }
+    }
 `
 
 const Contato = () => {
@@ -95,7 +124,7 @@ const Contato = () => {
         <ul>
           <li>
             <img src={imgFone} alt="fone" />
-            <b>TELEFONE:</b> <a href="https://wa.me/5582998054902">(82) 99805-4902</a> | <a href="https://wa.me/5582999859165">(82) 99985-9165</a>
+            <b>TELEFONE:</b> <a href="https://wa.me/5582998054902">(82) 99805-4902</a>  <a href="https://wa.me/5582999859165">(82) 99985-9165</a>
           </li>
           <li>
             <img src={imgEmail} alt="emails" />

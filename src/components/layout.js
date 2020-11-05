@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState, useContext } from "react"
+//import { elastic as Menu } from "react-burger-menu"
 import { Link } from "gatsby"
 import "./layout.css"
 import styled from "styled-components"
@@ -42,6 +43,7 @@ const Header = styled.div`
     display: none;
   }
 `
+
 const Footer =styled.div`
   font-family: Poppins, sans-serif;
   background-color: #758b8b;
@@ -66,8 +68,59 @@ const Footer =styled.div`
   #social a {
     padding-right: 40px;
   }
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    #social {
+      padding-top: 2em;
+  
+    }
+  }
 `
+/*
+const MyContext = React.createContext()
 
+const MyProvider = props => {
+  const [menuOpenState, setMenuOpenState] = useState(false)
+
+  return (
+    <MyContext.Provider
+      value={{
+        isMenuOpen: menuOpenState,
+        toggleMenu: () => setMenuOpenState(!menuOpenState),
+        stateChangeHandler: newState => setMenuOpenState(newState.isOpen),
+      }}
+    >
+      {props.children}
+    </MyContext.Provider>
+  )
+}
+
+const Navigation = () => {
+  const ctx = useContext(MyContext)
+  return (
+    <Menu
+      isOpen={ctx.isMenuOpen}
+      onStateChange={state => ctx.stateChangeHandler(state)}
+    >
+      <a href="#escritorio" className="menu-item">
+        SELOS
+      </a>
+      <a href="#socios" className="menu-item">
+        LOJA
+      </a>
+      <a href="#contato" className="menu-item">
+        AUTORES
+      </a>
+      <a href="#contato" className="menu-item">
+        BLOG
+      </a>
+      <a href="#contato" className="menu-item">
+        CONTATO
+      </a>
+    </Menu>
+  )
+}
+*/
 const Layout = ({ children }) => {
   return (
     <>
@@ -92,13 +145,16 @@ const Layout = ({ children }) => {
           <p>E-MAIL: trajeseditora@gmail.com</p>
         </div>
         <div id="social">
-          <a href="https://instagram.com">
+          <a href="https://instagram.com/trajeslunares">
             <img src={insta} alt="instagram" />
           </a>
-          <a href="https://facebook.com">
+          <a href="https://instagram.com/trajessolares">
+            <img src={insta} alt="instagram" />
+          </a>
+          <a href="https://www.facebook.com/trajeslunares/">
             <img src={fb} alt="facebook" />
           </a>
-          <a href="https://whatsapp.com">
+          <a href="https://wa.me/5582998054902">
             <img src={wpp} alt="whatsapp" />
           </a>
         </div>

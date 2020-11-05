@@ -115,13 +115,12 @@ const Selos = () => (
       <Home>
         <Carousel>
           <Carousel.Item>
-            <img className="d-block w-100" src={logoDestaque} alt="logo" />
+            <img className="d-block w-100 h-75" src={logoDestaque} alt="logo" />
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src={livroDestaque} alt="livro" />
+            <img className="d-block w-100 h-75" src={livroDestaque} alt="livro" />
             <Carousel.Caption>
               <h3>Diabolô</h3>
-              <p>Confira o novo livro!</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

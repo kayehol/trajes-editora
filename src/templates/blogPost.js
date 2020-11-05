@@ -28,6 +28,12 @@ const PostCompleto = styled.div`
     width: 64px;
     height: 64px;
   }
+  @media screen and (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2em 1em;
+  }
 `
 
 const BlogPostTemplate = ({ data }) => (

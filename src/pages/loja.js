@@ -14,6 +14,12 @@ const Container = styled.div`
     color: #231f20;
   }
   height: 600px;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    padding: 4em 1em;
+    align-items: flex-start;
+    height: auto;
+  }
 `
 
 const Livro = styled.div`
@@ -29,6 +35,10 @@ const Livro = styled.div`
   }
   img {
     border-radius: 15%;
+  }
+  @media screen and (max-width: 720px) {
+    width: 100%;
+    padding: 0 1em;
   }
 `
 

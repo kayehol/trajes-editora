@@ -14,10 +14,11 @@ const Container = styled.div`
     display: flex;
     justify-content: flex-end;
     padding: 0 20px 0 0;
-    img {
+    
+  }
+  #voltar img {
       width: 64px;
       height: 64px;
-    }
   }
   #autorGeral{
     display: flex;
@@ -50,6 +51,7 @@ const Container = styled.div`
     width: 70%;
     margin: auto;
     height: 100%;
+  }
     
     #bio {
       padding: 80px 60px 0 0;
@@ -65,6 +67,39 @@ const Container = styled.div`
       text-align: center;
       margin: 0;
       padding: 0;
+    }
+    @media screen and (max-width: 720px) {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+      height: auto;
+      #voltar {
+        justify-content: center;
+        padding: 0;
+        width: 100%;
+      }
+      #autorGeral {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+      }
+      #nomeFoto {
+        width: 90%;
+        height: auto;
+        justify-content: center;
+      }
+      #infoLink {
+        width: 100%;
+        height: auto;
+      }
+      #bio p {
+        padding: 0;
+      }
+      #bio {
+        padding: 2em 1em;
+      }
     }
   }
 `

@@ -13,6 +13,11 @@ const Container = styled.div`
   flex-direction: row;
   padding-top: 60px;
   align-items: justify-start;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0 30px 0;
+  }
 `
 
 const Wrapper = styled.div`
@@ -30,6 +35,9 @@ const Wrapper = styled.div`
   }
   img {
     border-radius: 15%;
+  }
+  @media screen and (max-width: 720px) {
+    padding: 2em 3em;
   }
 `
 
