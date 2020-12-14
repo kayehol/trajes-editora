@@ -69,10 +69,12 @@ module.exports = {
         acfOptionPageIds: [],
         verboseOutput: false,
         perPage: 100,
+        /*
         searchAndReplaceContentUrls: {
           sourceUrl: "https://trajeseditora.com.br",
           replacementUrl: "https://localhost:8000",
         },
+        */
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
         includedRoutes: [

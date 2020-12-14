@@ -72,9 +72,11 @@ const Blog = ({data}) => (
                         <Link to={`/post/${post.node.slug}`}>
                             <div id="post">
                                 <h3 dangerouslySetInnerHTML={{__html: post.node.title}}/>
-                                <Img 
+                                {post.node.featured_media !== null && 
+                                    <Img 
                                     fluid={post.node.featured_media.localFile.childImageSharp.fluid}
                                 />
+                                }
                                 <div id="excerpt" dangerouslySetInnerHTML={{__html: post.node.excerpt}} />
                             </div>
                         </Link>
