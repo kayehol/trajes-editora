@@ -73,9 +73,7 @@ const Blog = ({data}) => (
                             <div id="post">
                                 <h3 dangerouslySetInnerHTML={{__html: post.node.title}}/>
                                 {post.node.featured_media !== null && 
-                                    <Img 
-                                    fluid={post.node.featured_media.localFile.childImageSharp.fluid}
-                                />
+                                    <Img fluid={post.node.featured_media.localFile.childImageSharp.fluid}/>
                                 }
                                 <div id="excerpt" dangerouslySetInnerHTML={{__html: post.node.excerpt}} />
                             </div>

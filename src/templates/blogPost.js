@@ -15,7 +15,7 @@ const PostCompleto = styled.div`
   }
   #conteudoPost {
     font-size: 1em;
-    padding: 40px 0;
+    padding: 30px 0;
   }
   h1 {
     font-weight: bold;
@@ -67,7 +67,7 @@ export const query = graphql`
       title
       content
       excerpt
-      date(formatString: "DD MM, YYYY")
+      date(formatString: "DD/MM/YYYY")
       featured_media {
         localFile {
           childImageSharp {
