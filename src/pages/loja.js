@@ -48,8 +48,9 @@ const Loja = ({ data }) => (
     <Container>
       {data.allWcProducts.edges.map(node => (
           <Livro key={node.node.id}>
-            {console.log(node.node)}
-            <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
+            {node.node.images.length !== 0 &&
+              <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
+            }
             <Link href={`https://trajeseditora.com.br/loja/produto/${node.node.slug}`}>
               <h4>{node.node.name}</h4>
             </Link>

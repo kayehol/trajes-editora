@@ -83,10 +83,11 @@ const Produto = ({ data }) => (
         </Link>
       </div>
       <div id="autorGeral">
-        
-        <Img
+        {data.wcProducts.images.length !== 0 &&
+          <Img
           fixed={data.wcProducts.images[0].localFile.childImageSharp.fixed}
-        />
+          />
+        }
         <div id="bioProduto">
           <div id="headProduto">
             <h3>{data.wcProducts.name}</h3>
