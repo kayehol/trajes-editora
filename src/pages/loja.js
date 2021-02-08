@@ -8,12 +8,12 @@ import Img from "gatsby-image"
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 120px 0;
-  align-items: flex-end;
+  padding: 4em 0 2em 0;
+  align-items: flex-start;
   a{
     color: #231f20;
   }
-  height: 600px;
+  height: auto;
   @media screen and (max-width: 720px) {
     flex-direction: column;
     padding: 4em 1em;
@@ -27,7 +27,7 @@ const Livro = styled.div`
   display: flex;
   flex-direction: column;
   font-family: Poppins, sans-serif;
-  padding: 0 2em;
+  padding: 1em 2em;
   height: auto;
   width: 25%;
   margin: 0;
@@ -35,8 +35,12 @@ const Livro = styled.div`
     padding: 0.8em 0;
   }
   img {
-    border-radius: 15%;
+    border-radius: 10%;
   }
+  :hover {
+    scale: 1.03;
+  }
+  transition: scale 0.5s;
   @media screen and (max-width: 720px) {
     width: 100%;
     padding: 0 1em;
@@ -48,7 +52,7 @@ const Loja = ({ data }) => (
     <Container>
       {data.allWcProducts.edges.map(node => (
           <Livro key={node.node.id}>
-            {node.node.images.length !== 0 &&
+            {node.node.images[0].localFile !== null &&
               <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
             }
             <Link href={`https://trajeseditora.com.br/loja/produto/${node.node.slug}`}>
@@ -66,7 +70,7 @@ export default Loja
 
 export const query = graphql`
   query {
-    allWcProducts {
+    allWcProducts (sort: {fields: date_created, order: DESC}) {
       edges {
         node {
           wordpress_id

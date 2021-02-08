@@ -5,11 +5,9 @@ import styled from "styled-components"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "typeface-poppins"
 import "typeface-roboto"
-import Carousel from "react-bootstrap/Carousel"
 import logoSolares from "../images/logoSolares.png"
 import logoLunares from "../images/logoLunares.png"
 import logoDestaque from "../images/trajes.png"
-import livroDestaque from "../images/livroDestaque.png"
 //import Image from "../components/image"
 //import SEO from "../components/seo"
 
@@ -68,12 +66,16 @@ const SeloWrapper = styled.div`
   button {
     background-color: #fff;
     border: 2px solid #dbc724;
-	padding: 10px;
-	margin-top: 20px;
+	  padding: 10px;
+	  margin-top: 20px;
     width: 100%;
     font-size: 1.3em;
     letter-spacing: 2px;
   }
+  button:hover {
+    scale: 1.05;
+  }
+  transition: scale 1s;
   @media screen and (max-width: 720px) {
     display: flex;
     flex-direction: column;
@@ -114,17 +116,7 @@ const Selos = () => (
   <Layout>
     <Container>
       <Home>
-        <Carousel>
-          <Carousel.Item>
-            <img className="d-block w-100 h-75" src={logoDestaque} alt="logo" />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100 h-75" src={livroDestaque} alt="livro" />
-            <Carousel.Caption>
-              <h3>Diabolô</h3>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
+        <img className="d-block w-100 h-75" src={logoDestaque} alt="logo" />
       </Home>
       <article id="selosApresentacao">
         <p> A Trajes nasceu com a preocupação elementar de construir um ambiente editorial fundamentado em um&nbsp; novo tipo de relação entre editora, autores e leitores. Nasceu a partir da preocupação de construir soluções que tragam um equilíbrio para esse vínculo, tornando-o mais transparente e justo — especialmente, incorporando a esse processo um cuidado editorial atento, efetivo e afetivo. Afinal, cremos que publicamos livros que trazem histórias que seguem para além daquelas impressas exclusivamente em suas páginas.</p>

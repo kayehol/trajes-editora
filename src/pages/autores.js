@@ -36,6 +36,10 @@ const Wrapper = styled.div`
   img {
     border-radius: 15%;
   }
+  :hover {
+    scale: 1.03;
+  }
+  transition: scale 0.5s;
   @media screen and (max-width: 720px) {
     padding: 2em 3em;
   }
