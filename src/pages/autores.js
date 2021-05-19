@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 //import { Link } from "gatsby"
 import styled from "styled-components"
 import "typeface-poppins"
@@ -37,7 +37,7 @@ const Wrapper = styled.div`
     border-radius: 15%;
   }
   :hover {
-    scale: 1.03;
+    top: -10px;
   }
   transition: scale 0.5s;
   @media screen and (max-width: 720px) {
@@ -47,7 +47,7 @@ const Wrapper = styled.div`
 
 const Autor = (props) => (
   <Wrapper>
-    <Img id={props.nome} fluid={props.imagem} />
+    <GatsbyImage id={props.nome} fluid={props.imagem} />
     <Link to={props.slug}>
       <h3>{props.nome}</h3>
     </Link>
@@ -60,7 +60,7 @@ const Autores = ({data}) => (
       {data.allMarkdownRemark.edges.map(({node}) => (
         <Autor 
           key={node.id} 
-          imagem={node.frontmatter.featuredImage.childImageSharp.fluid} 
+          imagem={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData} 
           nome={node.frontmatter.nome} 
           id={node.id}
           slug={node.fields.slug} />

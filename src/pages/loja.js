@@ -39,6 +39,7 @@ const Livro = styled.div`
   }
   :hover {
     scale: 1.03;
+    cursor: pointer;
   }
   transition: scale 0.5s;
   @media screen and (max-width: 720px) {
@@ -51,15 +52,15 @@ const Loja = ({ data }) => (
   <Layout>
     <Container>
       {data.allWcProducts.edges.map(node => (
-          <Livro key={node.node.id}>
-            {node.node.images[0].localFile !== null &&
-              <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
-            }
+          <Livro key={node.node.id}>           
             <Link href={`https://trajeseditora.com.br/loja/produto/${node.node.slug}`}>
+              {node.node.images[0].localFile !== null &&
+                <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
+              }
               <h4>{node.node.name}</h4>
+              <h5>{node.node.categories[0].name}</h5>
+              <p>R$ {node.node.price}</p>
             </Link>
-            <h5>{node.node.categories[0].name}</h5>
-            <p>R$ {node.node.price}</p>
           </Livro>
       ))}
     </Container>
