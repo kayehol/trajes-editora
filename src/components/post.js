@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components"
-import Img from 'gatsby-image'
+//import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Wrapper = styled.div`
     width: 100%;
@@ -50,9 +51,11 @@ const Wrapper = styled.div`
 const Post = ({data}) => {
     return (
         <Wrapper>
+            { console.log(data) }
             <h3>{data.title}</h3>
-            {data.featured_media !== null && 
-                <Img fixed={data.featured_media.localFile.childImageSharp.fixed} />
+            {data.featuredImage.node.localFile.childImageSharp !== null && 
+                //<Img fixed={data.featuredImage.node.localFile.childImageSharp.fixed} />
+                <GatsbyImage image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
             }
             <p>{data.date}</p>
             {/* <div id="excerpt" dangerouslySetInnerHTML={{__html: data.excerpt}} /> */}

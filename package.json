@@ -21,7 +21,6 @@
     "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-styled-components": "^3.3.2",
     "gatsby-source-filesystem": "^2.3.4",
-    "gatsby-source-wordpress": "^3.3.11",
     "gatsby-transformer-remark": "^2.8.14",
     "gatsby-transformer-sharp": "^2.5.2",
     "gatsby-wordpress-inline-images": "^1.2.1",
@@ -38,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "gatsby-source-wordpress": "^4.0.6",
     "prettier": "2.0.5"
   },
   "keywords": [

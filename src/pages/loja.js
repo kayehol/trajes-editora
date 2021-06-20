@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-//import SEO from "../components/seo"
 import styled from "styled-components"
-import Img from "gatsby-image"
+//import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Container = styled.div`
   display: flex;
@@ -52,10 +52,12 @@ const Loja = ({ data }) => (
   <Layout>
     <Container>
       {data.allWcProducts.edges.map(node => (
-          <Livro key={node.node.id}>           
+          <Livro key={node.node.wordpress_id}>
+            {console.log(node.node)}           
             <Link href={`https://trajeseditora.com.br/loja/produto/${node.node.slug}`}>
-              {node.node.images[0].localFile !== null &&
-                <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
+              {node.node.images[0].localFile.childImageSharp !== null &&
+                //<Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
+                <GatsbyImage image={node.node.images[0].localFile.childImageSharp.gatsbyImageData} />
               }
               <h4>{node.node.name}</h4>
               <h5>{node.node.categories[0].name}</h5>
@@ -82,9 +84,7 @@ export const query = graphql`
             alt
             localFile {
               childImageSharp {
-                fluid(maxWidth: 500, toFormat: JPG) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH, formats: [AVIF, WEBP, JPG])
               }
             }
           }

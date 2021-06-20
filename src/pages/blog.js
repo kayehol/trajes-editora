@@ -58,7 +58,7 @@ const Blog = ({data}) => (
         <SEO title="Blog" />
         <Container>
             <ul>
-                {data.allWordpressPost.edges.map(post => (
+                {data.allWpPost.edges.map(post => (
                     <li>
                         <Link to={`/post/${post.node.slug}`}>
                             <PostPreview data={post.node} />
@@ -74,24 +74,23 @@ export default Blog
 
 export const query = graphql`
   query {
-    allWordpressPost {
+    allWpPost {
       edges {
         node {
           title
           excerpt
           slug
           date(formatString: "DD-MM-YYYY")
-          featured_media  {
-              localFile {
+          featuredImage  {
+              node {
+                localFile {
                   childImageSharp {
-                      fixed (height: 350, width: 350)  {
-                          ...GatsbyImageSharpFixed
-                      }
+                    gatsbyImageData(layout: FIXED)
                   }
               }
           }
         }
       }
     }
-  }
+  }}
 `

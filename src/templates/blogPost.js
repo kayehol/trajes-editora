@@ -39,21 +39,19 @@ const PostCompleto = styled.div`
 const BlogPostTemplate = ({ data }) => (
   <Layout>
     <SEO
-      title={data.wordpressPost.title}
-      description={data.wordpressPost.excerpt}
+      title={data.wpPost.title}
+      description={data.wpPost.excerpt}
     />
     <PostCompleto>
       <Link to="/blog">
         <img id="btVoltar" src={btVoltar} alt="voltar" />
       </Link>
-      <h1>{data.wordpressPost.title}</h1>
-      <p id="autorData">
-        {data.wordpressPost.date}
-      </p>
-      
+      <h1>{data.wpPost.title}</h1>
+      <p id="autorData">{data.wpPost.date}</p>
+
       <div
         id="conteudoPost"
-        dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
+        dangerouslySetInnerHTML={{ __html: data.wpPost.content }}
       />
     </PostCompleto>
   </Layout>
@@ -62,19 +60,21 @@ const BlogPostTemplate = ({ data }) => (
 export default BlogPostTemplate
 
 export const query = graphql`
-  query($id: Int!) {
-    wordpressPost(wordpress_id: { eq: $id }) {
+  query($id: String!) {
+    wpPost(id: { eq: $id }) {
       title
       content
       excerpt
       date(formatString: "DD/MM/YYYY")
-      featured_media {
-        localFile {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+      featuredImage {
+        node {
+            localFile {
+                childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                } 
             }
-          }
         }
       }
     }

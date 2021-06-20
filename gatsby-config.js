@@ -47,48 +47,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "trajeseditora.com.br",
-        protocol: "https",
-        plugins: [
-          {
-            resolve: `gatsby-wordpress-inline-images`,
-            options: {
-              baseUrl: `trajeseditora.com.br`,
-              protocol: `https`,
-              maxWidth: 650,
-              wrapperStyle: ``,
-		          postTypes: ["post", "page"],
-		          backgroundColor: `white`,
-		          withWebp: false, // enable WebP files generation
-		          useACF: false, 
-            }
-          }
-        ],
-        hostingWPCOM: false,
-        // We will be using some advanced custom fields
-        useACF: true,
-        acfOptionPageIds: [],
-        verboseOutput: false,
-        perPage: 100,
-        /*
-        searchAndReplaceContentUrls: {
-          sourceUrl: "https://trajeseditora.com.br",
-          replacementUrl: "https://localhost:8000",
-        },
-        */
-        // Set how many simultaneous requests are sent at once.
-        concurrentRequests: 10,
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags"
-        ],
-        excludedRoutes: [],
-        normalizer: function ({ entities }) {
-          return entities
-        },
+        url: "https://trajeseditora.com.br/graphql",
       },
     },
     {

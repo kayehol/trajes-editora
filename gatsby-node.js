@@ -47,11 +47,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const resultWP = await graphql(`
     {
-      allWordpressPost {
+      allWpPost {
         edges {
           node {
             slug
-            wordpress_id
+            id
           }
         }
       }
@@ -63,13 +63,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const BlogPosts = resultWP.data.allWordpressPost.edges
+  const BlogPosts = resultWP.data.allWpPost.edges
   BlogPosts.forEach(post => {
     createPage({
       path: `/post/${post.node.slug}`,
       component: BlogPostTemplate,
       context: {
-        id: post.node.wordpress_id,
+        id: post.node.id,
       },
     })
   })
