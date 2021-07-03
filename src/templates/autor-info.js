@@ -1,9 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
+//import { GatsbyImage } from "gatsby-plugin-image";
 import Img from "gatsby-image"
 import btVoltar from "../images/voltar.png"
 import styled from "styled-components"
+import SEO from "../components/seo"
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +42,7 @@ const Container = styled.div`
       padding-top: 40px;
     }
     Img {
-      border-radius: 15%;   
+      border-radius: 10%;   
     }
   }
   #infoLink{
@@ -71,7 +73,7 @@ const Container = styled.div`
     @media screen and (max-width: 720px) {
       display: flex;
       flex-direction: column;
-      padding: 0;
+      padding: 5em 0;
       margin: 0;
       height: auto;
       #voltar {
@@ -108,6 +110,7 @@ export default function AutorInfo({ data }) {
   const autor = data.markdownRemark
   return (
     <Layout>
+      <SEO title={autor.frontmatter.nome} />
       <Container>
         <div id="voltar">
           <Link to="/autores">
@@ -117,9 +120,8 @@ export default function AutorInfo({ data }) {
         <div id="autorGeral">
           <div id="nomeFoto">
             <Img
-              id={autor.frontmatter.nome}
-              fluid={autor.frontmatter.featuredImage.childImageSharp.fluid}
-            />
+              fixed={autor.frontmatter.featuredImage.childImageSharp.fixed}
+              id={autor.frontmatter.nome} />
             <h2>{autor.frontmatter.nome.toUpperCase()}</h2>
           </div>
           <div id="infoLink">
@@ -128,23 +130,23 @@ export default function AutorInfo({ data }) {
         </div>
       </Container>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        nome
-        featuredImage {
-          childImageSharp {
-            fluid(maxWidth: 300, maxHeight: 450)  {
-              ...GatsbyImageSharpFluid
-            }
+query ($slug: String!) {
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    html
+    frontmatter {
+      nome
+      featuredImage {
+        childImageSharp {
+          fixed (height: 400, width: 300) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
     }
   }
+}
 `

@@ -2,8 +2,9 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components"
-//import Img from "gatsby-image"
-import { GatsbyImage } from "gatsby-plugin-image"
+import Img from "gatsby-image"
+import SEO from "../components/seo"
+//import { GatsbyImage } from "gatsby-plugin-image"
 
 const Container = styled.div`
   display: flex;
@@ -38,7 +39,7 @@ const Livro = styled.div`
     border-radius: 10%;
   }
   :hover {
-    scale: 1.03;
+    scale: 1.02;
     cursor: pointer;
   }
   transition: scale 0.5s;
@@ -50,14 +51,14 @@ const Livro = styled.div`
 
 const Loja = ({ data }) => (
   <Layout>
+    <SEO title='Loja' />
     <Container>
       {data.allWcProducts.edges.map(node => (
           <Livro key={node.node.wordpress_id}>
-            {console.log(node.node)}           
             <Link href={`https://trajeseditora.com.br/loja/produto/${node.node.slug}`}>
               {node.node.images[0].localFile.childImageSharp !== null &&
-                //<Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
-                <GatsbyImage image={node.node.images[0].localFile.childImageSharp.gatsbyImageData} />
+                <Img fluid={node.node.images[0].localFile.childImageSharp.fluid} />
+                //<GatsbyImage image={node.node.images[0].localFile.childImageSharp.gatsbyImageData} />
               }
               <h4>{node.node.name}</h4>
               <h5>{node.node.categories[0].name}</h5>
@@ -84,7 +85,9 @@ export const query = graphql`
             alt
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, formats: [AVIF, WEBP, JPG])
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }

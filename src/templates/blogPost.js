@@ -32,7 +32,7 @@ const PostCompleto = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 2em 1em;
+    padding: 6em 1em;
   }
 `
 
@@ -59,24 +59,21 @@ const BlogPostTemplate = ({ data }) => (
 
 export default BlogPostTemplate
 
-export const query = graphql`
-  query($id: String!) {
-    wpPost(id: { eq: $id }) {
-      title
-      content
-      excerpt
-      date(formatString: "DD/MM/YYYY")
-      featuredImage {
-        node {
-            localFile {
-                childImageSharp {
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                } 
-            }
+export const query = graphql`query ($id: String!) {
+  wpPost(id: {eq: $id}) {
+    title
+    content
+    excerpt
+    date(formatString: "DD/MM/YYYY")
+    featuredImage {
+      node {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
         }
       }
     }
   }
+}
 `

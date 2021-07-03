@@ -85,7 +85,9 @@ export const query = graphql`
               node {
                 localFile {
                   childImageSharp {
-                    gatsbyImageData(layout: FIXED)
+                    fixed (height: 300, width: 350) {
+                        ...GatsbyImageSharpFixed
+                    }
                   }
               }
           }

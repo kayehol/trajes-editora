@@ -9,7 +9,7 @@ import logoSolares from "../images/logoSolares.png"
 import logoLunares from "../images/logoLunares.png"
 import logoDestaque from "../images/trajes.png"
 //import Image from "../components/image"
-//import SEO from "../components/seo"
+import SEO from "../components/seo"
 
 const Home = styled.div`
   z-index: 0;
@@ -114,6 +114,7 @@ const Container = styled.div`
 
 const Selos = () => (
   <Layout>
+    <SEO title='Selos' />
     <Container>
       <Home>
         <img className="d-block w-100 h-75" src={logoDestaque} alt="logo" />

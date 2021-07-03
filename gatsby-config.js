@@ -4,6 +4,9 @@ module.exports = {
     description: `Site da editora Trajes Solares/Lunares.`,
     author: `Kayê Holanda`,
   },
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
@@ -31,7 +34,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-image`,
+    //`gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from "styled-components"
-//import Img from 'gatsby-image'
-import { GatsbyImage } from "gatsby-plugin-image"
+import Img from 'gatsby-image'
+import SEO from "../components/seo"
+//import { GatsbyImage } from "gatsby-plugin-image"
 
 const Wrapper = styled.div`
     width: 100%;
@@ -32,8 +33,8 @@ const Wrapper = styled.div`
         padding: 1em 0;
     } */
     img {
-        padding: 1em;
-        border-radius: 40px;
+        padding: 0.5em;
+        border-radius: 10%;
     }
     @media screen and (max-width: 720px) {
         width: auto;
@@ -51,11 +52,10 @@ const Wrapper = styled.div`
 const Post = ({data}) => {
     return (
         <Wrapper>
-            { console.log(data) }
             <h3>{data.title}</h3>
             {data.featuredImage.node.localFile.childImageSharp !== null && 
-                //<Img fixed={data.featuredImage.node.localFile.childImageSharp.fixed} />
-                <GatsbyImage image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
+                <Img fixed={data.featuredImage.node.localFile.childImageSharp.fixed} />
+                //<GatsbyImage image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
             }
             <p>{data.date}</p>
             {/* <div id="excerpt" dangerouslySetInnerHTML={{__html: data.excerpt}} /> */}

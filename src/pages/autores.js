@@ -1,12 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-//import { Link } from "gatsby"
+import Img from "gatsby-image"
+//import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import "typeface-poppins"
 import "typeface-roboto"
 import Layout from "../components/layout"
-//import SEO from "../components/seo"
+import SEO from "../components/seo"
 
 const Container = styled.div`
   display: flex;
@@ -34,10 +34,11 @@ const Wrapper = styled.div`
     text-align: center;
   }
   img {
-    border-radius: 15%;
+    border-radius: 10%;
   }
   :hover {
-    top: -10px;
+    scale: 1.02;
+    cursor: pointer;
   }
   transition: scale 0.5s;
   @media screen and (max-width: 720px) {
@@ -47,27 +48,30 @@ const Wrapper = styled.div`
 
 const Autor = (props) => (
   <Wrapper>
-    <GatsbyImage id={props.nome} fluid={props.imagem} />
     <Link to={props.slug}>
+      <Img id={props.nome} fixed={props.imagem} />
       <h3>{props.nome}</h3>
     </Link>
   </Wrapper>
 )
 
-const Autores = ({data}) => (
-  <Layout>
-    <Container>
-      {data.allMarkdownRemark.edges.map(({node}) => (
-        <Autor 
-          key={node.id} 
-          imagem={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData} 
-          nome={node.frontmatter.nome} 
-          id={node.id}
-          slug={node.fields.slug} />
-      ))}
-    </Container>
-  </Layout>
-)
+const Autores = ({data}) => {
+   return (
+    <Layout>
+      <SEO title='Autores' />
+      <Container>
+        {data.allMarkdownRemark.edges.map(({node}) => (
+          <Autor 
+            key={node.id} 
+            imagem={node.frontmatter.featuredImage.childImageSharp.fixed} 
+            nome={node.frontmatter.nome} 
+            id={node.id}
+            slug={node.fields.slug} />
+        ))}
+      </Container>
+    </Layout>
+   )
+}
 
 export default Autores
 
@@ -80,8 +84,8 @@ query {
           nome
           featuredImage {
             childImageSharp {
-              fluid (maxWidth: 400, maxHeight: 550) {
-                ...GatsbyImageSharpFluid
+              fixed (height: 400, width: 300) {
+                  ...GatsbyImageSharpFixed
               }
             }
           }
